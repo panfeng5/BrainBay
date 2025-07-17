@@ -23,7 +23,6 @@
 #include <tlhelp32.h>
 
 #include "ob_evaluator.h"
-#include "ob_evaluator_exprtk.h"
 #include "ob_fft.h"
 #include "ob_midi.h"
 #include "ob_osci.h"
@@ -53,12 +52,10 @@
 #include "ob_mouse.h"
 #include "ob_erpdetect.h"
 #include "ob_com_writer.h"
-#include "ob_cam.h"
 #include "ob_integrate.h"
 #include "ob_debounce.h"
 #include "ob_sample_hold.h"
 #include "ob_constant.h"
-#include "ob_matlab.h"
 #include "ob_counter.h"
 #ifndef MINGW
 #include "ob_skindialog.h"
@@ -68,20 +65,16 @@
 #include "ob_mci.h"
 #include "ob_keystrike.h"
 #include "ob_peakdetect.h"
-#include "ob_speller.h"
 #include "ob_martini.h"
 #include "ob_file_reader.h"
-#include "ob_port_io.h"
 #include "ob_array3600.h"
 #include "ob_comreader.h"
-#include "ob_neurobit.h"
 #include "ob_min.h"
 #include "ob_max.h"
 #include "ob_round.h"
 #include "ob_differentiate.h"
 #include "ob_delay.h"
 #include "ob_limiter.h"
-#include "ob_emotiv.h"
 #include "ob_floatvector.h"
 #include "ob_vectorfloat.h"
 #include "ob_displayvector.h"
@@ -94,8 +87,6 @@
 #include "ob_shadow.h"
 #include "ob_volume.h"
 #include "ob_osc_sender.h"
-#include "ob_biosemi.h"
-#include "ob_brainflow.h"
 
 //
 // GLOBAL VARIABLES
@@ -133,7 +124,7 @@ char objnames[OBJECT_COUNT][20]      = { OBJNAMES };
 char dimensions[10][10]      = {"uV","mV","V","Hz","%","DegC","DegF","uS","kOhm","BPM" };
 int  fft_bin_values[10]    = { 32,64,128,256,512,1024,2048,4096,0 };
 
-int singletonObjects [] = {OB_EEG,OB_WAV,OB_CAM,OB_SKINDIALOG,OB_NEUROBIT,OB_GANGLION,OB_SESSIONMANAGER,OB_BRAINFLOW,-1};
+int singletonObjects [] = {OB_EEG,OB_WAV,OB_SKINDIALOG,OB_GANGLION,OB_SESSIONMANAGER,-1};
 	
 
 //
@@ -194,7 +185,6 @@ void create_object(int type)
 							 actobject->object_size=sizeof(DOKUOBJ);break;
 		case OB_EVAL:		 actobject=new EVALOBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(EVALOBJ);break;
-		case OB_EVAL_EXPRTK: createEvaluatorExprtk(GLOBAL.objects, &actobject); break;
 
 		case OB_AVI:		 actobject=new AVIOBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(AVIOBJ);break;
@@ -220,8 +210,6 @@ void create_object(int type)
 							 actobject->object_size=sizeof(ERPDETECTOBJ);break;
 		case OB_COM_WRITER:  actobject=new COM_WRITEROBJ(GLOBAL.objects);
 							 actobject->object_size=sizeof(COM_WRITEROBJ);break;
-		case OB_CAM:		 actobject=new CAMOBJ(GLOBAL.objects); 
-							 actobject->object_size=sizeof(CAMOBJ);break;
 		case OB_INTEGRATE:	 actobject=new INTEGRATEOBJ(GLOBAL.objects);
 							 actobject->object_size=sizeof(INTEGRATEOBJ);break;
 		case OB_DEBOUNCE:	 actobject=new DEBOUNCEOBJ(GLOBAL.objects); 
@@ -230,8 +218,6 @@ void create_object(int type)
 							 actobject->object_size=sizeof(SAMPLE_HOLDOBJ);break;
 		case OB_CONSTANT:    actobject=new CONSTANTOBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(CONSTANTOBJ);break;
-        case OB_MATLAB: 	 actobject=new MATLABOBJ(GLOBAL.objects); 
-							 actobject->object_size=sizeof(MATLABOBJ);break;
         case OB_COUNTER: 	 actobject=new COUNTEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(COUNTEROBJ);break;
 #ifndef MINGW
@@ -248,21 +234,14 @@ void create_object(int type)
 							 actobject->object_size=sizeof(KEYSTRIKEOBJ);break;
 		case OB_PEAKDETECT:  actobject=new PEAKDETECTOBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(PEAKDETECTOBJ);break;
-		case OB_SPELLER:	 actobject=new SPELLEROBJ(GLOBAL.objects); 
-							 actobject->object_size=sizeof(SPELLEROBJ);break;
 		case OB_MARTINI:	 actobject=new MARTINIOBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(MARTINIOBJ);break;
 		case OB_FILE_READER: actobject=new FILE_READEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(FILE_READEROBJ);break;
-		case OB_PORT_IO:	 actobject=new PORTOBJ(GLOBAL.objects); 
-							 actobject->object_size=sizeof(PORTOBJ);break;
 		case OB_ARRAY3600:   actobject=new ARRAY3600OBJ(GLOBAL.objects);
 							 actobject->object_size=sizeof(ARRAY3600OBJ);break;
 		case OB_COMREADER:   actobject=new COMREADEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(COMREADEROBJ);break;
-		case OB_NEUROBIT:      actobject=new NEUROBITOBJ(GLOBAL.objects); 
-							 deviceobject=actobject;
-							 actobject->object_size=sizeof(NEUROBITOBJ);break;
 		case OB_MIN:		 actobject=new MINOBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(MINOBJ);break;
 		case OB_MAX:         actobject=new MAXOBJ(GLOBAL.objects); 
@@ -275,9 +254,6 @@ void create_object(int type)
 							 actobject->object_size=sizeof(DELAYOBJ);break;
 		case OB_LIMITER:      actobject=new LIMITEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(LIMITEROBJ);break;
-		case OB_EMOTIV:		 actobject=new EMOTIVOBJ(GLOBAL.objects);
-							 deviceobject=actobject;
-							 actobject->object_size=sizeof(EMOTIVOBJ);break;
 		case OB_FLOATVECTOR: actobject=new FLOATVECTOROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(FLOATVECTOROBJ);break;
 		case OB_VECTORFLOAT: actobject=new VECTORFLOATOBJ(GLOBAL.objects); 
@@ -303,17 +279,6 @@ void create_object(int type)
 							 actobject->object_size=sizeof(VOLUMEOBJ);break;
 		case OB_OSC_SENDER:  actobject=new OSC_SENDEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(OSC_SENDEROBJ);break;
-		case OB_BIOSEMI:	 actobject = new BIOSEMIOBJ(GLOBAL.objects); 
-				 			 actobject->object_size = sizeof(BIOSEMIOBJ); break;
-		case OB_BRAINFLOW:
-#if _MSC_VER >= 1900
-							 actobject = new BRAINFLOWOBJ(GLOBAL.objects);
-							 deviceobject = actobject;
-							 actobject->object_size = sizeof(BRAINFLOWOBJ); break;
-#else
-			MessageBox(NULL, "Brainflow element is only supported if BrainBay is compiled with newer version of Visual Studio (Platform toolset V142)", "Error", MB_OK);
-#endif
-
 	}
 	if (actobject)
 	{
@@ -585,22 +550,6 @@ void register_classes (HINSTANCE hInstance)
 	wcex.hIconSm		= LoadIcon(hInstance, (LPCTSTR)IDI_SMALL);
 	if(!RegisterClassEx(&wcex))
         report_error("Can't register Martini-Windowclass");
-	
-
-	wcex.cbSize = sizeof(WNDCLASSEX);
-	wcex.style = 0;//CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc = (WNDPROC)SpellerWndHandler;
-	wcex.cbClsExtra = 0;
-	wcex.cbWndExtra = 0;
-	wcex.hInstance = hInstance;
-	wcex.hIcon = LoadIcon(hInstance, (LPCTSTR)IDI_MYEEG);
-	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= NULL;
-	wcex.lpszClassName	= "Speller_Class";
-	wcex.hIconSm		= LoadIcon(hInstance, (LPCTSTR)IDI_SMALL);
-	if(!RegisterClassEx(&wcex))
-        report_error("Can't register Speller-Windowclass");
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_DBLCLKS ;//CS_HREDRAW | CS_VREDRAW;
@@ -811,15 +760,9 @@ void GlobalInitialize()
 	GLOBAL.syncloss=0;
 	GLOBAL.dialog_interval=DIALOG_UPDATETIME;
 	GLOBAL.draw_interval=DRAW_UPDATETIME;
-	GLOBAL.neurobit_available=0;
-	strcpy(GLOBAL.neurobit_device,DEFAULT_NEUROBIT_DEVICE);
-	GLOBAL.emotiv_available=0;
-	GLOBAL.biosemi_available = 0;
 	GLOBAL.ganglion_available=0;
-	GLOBAL.brainflow_available = 0;
 	GLOBAL.ganglion_bledongle=1;  // BLED112 dongle is default
 	GLOBAL.use_cv_capture=0;
-	strcpy(GLOBAL.emotivpath,"C:\\Program Files (x86)\\Emotiv Development Kit_v1.0.0.3-PREMIUM");
 	strcpy(GLOBAL.ganglionhubpath,"C:\\Program Files\\OpenBCI_GUI\\data\\OpenBCIHub\\OpenBCIHub.exe");
 	strcpy(GLOBAL.gangliondevicename,"idle");
 	strcpy(GLOBAL.startdesignpath,"");

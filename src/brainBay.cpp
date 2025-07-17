@@ -7,7 +7,6 @@
   
   Co-Authors:
 		 Jeremy Wilkerson (Modules: AND, OR, NOT, WAV, CORRELATION, EVALUATOR)
-		 Lester John (Module MATLAB-transfer)
 		 Stephan Gerhard (QDS parser)
 		 Raymond Nguyen (Vector ports)
  		 Franz Stobl ( NIA support )
@@ -20,8 +19,6 @@
 
   Multimedia and OpenGL: winmm.lib opengl32.lib glu32.lib vfw32.lib glaux.lib
   SDL (Simple Direct Media Layer): SDL.lib SDL_net.lib SDL_sound.lib modplug.lib 
-  OpenCV - Intels's Computer Vision Library: cv.lib cvcam.lib cxcore.lib highgui.lib
-  Matlab Engine (only in special Matlab Release): libeng.lib libmx.lib 
   Jim Peters's Filter Library: fidlib.lib (http://uazu.net)
   Skinned Dialog by John Roark: skinstyle.lib (http://www.codeproject.com/dialog/skinstyle.asp)
   GNU LibMatheval by Aleksandar B. Samardz: matheval.lib (http://www.gnu.org/software/libmatheval)
@@ -51,13 +48,10 @@
 #include "ob_sessionmanager.h"
 #include "ob_threshold.h"
 #include "ob_skindialog.h"
-#include "ob_neurobit.h"
 
 LRESULT CALLBACK AboutDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam );
 LRESULT CALLBACK SCALEDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam );
 LRESULT CALLBACK COLORDlgHandler(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
-
-extern NEUROBITOBJ * NB_OBJ;
 
 int check_keys(void)
 {
@@ -217,10 +211,8 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 		break;
 
 	 case WM_ENABLE:
-		 if ((wParam==TRUE) && (NB_OBJ != NULL)) 
+		 if ((wParam==TRUE)) 
 		 {
-			 NB_OBJ->update_channelinfo();
-			 NB_OBJ=NULL;
 		 }
 		 break;
 
@@ -434,8 +426,6 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 					break;
                 case IDM_INSERTEVAL:create_object(OB_EVAL);
 					break;
-				case IDM_INSERTEVAL_EXPRTK:create_object(OB_EVAL_EXPRTK);
-					break;
 				case IDM_INSERTAVI:create_object(OB_AVI);
 					break;
 				case IDM_INSERTAVERAGE:create_object(OB_AVERAGE);
@@ -460,9 +450,6 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 					break;
 				case IDM_INSERTCOM_WRITER:create_object(OB_COM_WRITER);
 					break;
-				case IDM_INSERTCAM:
-					if (!count_objects(OB_CAM)) create_object(OB_CAM);
-					break;
 				case IDM_INSERTINTEGRATE:create_object(OB_INTEGRATE);
 					break;
 				case IDM_INSERTDEBOUNCE:create_object(OB_DEBOUNCE);
@@ -470,8 +457,6 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 				case IDM_INSERTSAMPLE_HOLD:create_object(OB_SAMPLE_HOLD);
 					break;
 				case IDM_INSERTCONSTANT:create_object(OB_CONSTANT);
-					break;
-				case IDM_INSERTMATLAB:create_object(OB_MATLAB);
 					break;
 				case IDM_INSERTCOUNTER:create_object(OB_COUNTER);
 					break;
@@ -488,13 +473,9 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 					break;
 				case IDM_INSERTPEAKDETECT:create_object(OB_PEAKDETECT);
 					break;
-				case IDM_INSERTSPELLER:create_object(OB_SPELLER);
-					break;
 				case IDM_INSERTMARTINI:create_object(OB_MARTINI);
 					break;
 				case IDM_INSERTFILE_READER:create_object(OB_FILE_READER);
-					break;
-				case IDM_INSERTPORT_IO:create_object(OB_PORT_IO);
 					break;
 				case IDM_INSERTARRAY3600:create_object(OB_ARRAY3600);
 					break;
@@ -587,21 +568,9 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 				case IDM_INSERT_EEG_NEUROSKY: 
 					if (!count_objects(OB_EEG))  { TTY.devicetype=DEV_NEUROSKY; create_object(OB_EEG);} 
 					break;
-				case IDM_INSERT_EEG_BIOSEMI:
-					create_object(OB_BIOSEMI);
-					break;
 				// these devices need special care (seperate element)
-				case IDM_INSERTOPTIMA:
-					if ((!count_objects(OB_NEUROBIT)) && (!count_objects(OB_EEG))) create_object(OB_NEUROBIT);
-					break;
-				case IDM_INSERTEMOTIV:
-					if ((!count_objects(OB_EMOTIV)) && (!count_objects(OB_EEG))) create_object(OB_EMOTIV);
-					break;
 				case IDM_INSERTGANGLION:
 					if ((!count_objects(OB_GANGLION)) && (!count_objects(OB_EEG))) create_object(OB_GANGLION);
-					break;
-				case IDM_INSERT_BRAINFLOW:
-					if (!count_objects(OB_BRAINFLOW)) create_object(OB_BRAINFLOW);
 					break;
 
 				case IDM_COPY:

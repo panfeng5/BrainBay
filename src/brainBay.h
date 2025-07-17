@@ -7,7 +7,6 @@
   
   Co-Authors:
 		 Jeremy Wilkerson (Modules: AND, OR, NOT, WAV, CORRELATION, EVALUATOR)
-		 Lester John (Module MATLAB-transfer)
 		 Stephan Gerhard (QDS parser)
 		 Franz Stobl ( NIA support )
 
@@ -18,8 +17,6 @@
 
   Multimedia and OpenGL: winmm.lib opengl32.lib glu32.lib vfw32.lib glaux.lib
   SDL (Simple Direct Media Layer): SDL.lib SDL_net.lib SDL_sound.lib modplug.lib 
-  OpenCV - Intels's Computer Vision Library: cv.lib cvcam.lib cxcore.lib highgui.lib
-  Matlab Engine (only in special Matlab Release): libeng.lib libmx.lib 
   Jim Peters's Filter Library: fidlib.lib (http://uazu.net)
   Skinned Dialog by John Roark: skinstyle.lib (http://www.codeproject.com/dialog/skinstyle.asp)
   GNU LibMatheval by Aleksandar B. Samardz: matheval.lib (http://www.gnu.org/software/libmatheval)
@@ -101,12 +98,10 @@ extern "C" {
 #define OB_MOUSE        26
 #define OB_ERPDETECT    27
 #define OB_COM_WRITER   28
-#define OB_CAM          29
 #define OB_INTEGRATE    30
 #define OB_DEBOUNCE     31
 #define OB_SAMPLE_HOLD  32
 #define OB_CONSTANT     33
-#define OB_MATLAB       34
 #define OB_COUNTER      35
 #define OB_SKINDIALOG   36
 #define OB_FILE_WRITER  37
@@ -114,20 +109,16 @@ extern "C" {
 #define OB_MCIPLAYER    39
 #define OB_KEYSTRIKE    40
 #define OB_PEAKDETECT   41
-#define OB_SPELLER	    42
 #define OB_MARTINI	    43
 #define OB_FILE_READER	44
-#define OB_PORT_IO		45
 #define OB_ARRAY3600    46
 #define OB_COMREADER    47
-#define OB_NEUROBIT     48
 #define OB_MIN          49
 #define OB_MAX          50
 #define OB_ROUND        51
 #define OB_DIFFERENTIATE 52
 #define OB_DELAY        53
 #define OB_LIMITER      54
-#define OB_EMOTIV		55
 #define OB_FLOATVECTOR	56
 #define OB_VECTORFLOAT	57
 #define OB_DISPLAYVECTOR 58
@@ -137,12 +128,9 @@ extern "C" {
 #define OB_SESSIONMANAGER 62
 #define OB_KEYCAPTURE   63
 #define OB_BUTTON       64
-#define OB_EVAL_EXPRTK  65
 #define OB_SHADOW       66
 #define OB_VOLUME       67
 #define OB_OSC_SENDER   68
-#define OB_BIOSEMI		69
-#define OB_BRAINFLOW	70
 #define OB_LSL_RECEIVER 71
 
 #define OBJECT_COUNT 	72
@@ -155,15 +143,15 @@ extern "C" {
 				 "TRANSLATE","SIGNAL","MAGNITUDE","AND","SOUND","OR","NOT", \
 				 "TCP-RECEIVE","INFO","EVALUATOR", "AVI","AVERAGER","CORRELATION", \
 				 "EDF-READER","EDF-WRITER","TCP-SENDER","COMPARE","BALLGAME",  \
-				 "MIXER", "MOUSE", "ERP-DETECT", "COM-WRITER", "CAMERA", "INTEGRATE", \
-				 "DEBOUNCE", "SAMPLE_HOLD", "CONSTANT", "MATLAB","COUNTER", \
+				 "MIXER", "MOUSE", "ERP-DETECT", "COM-WRITER", "INTEGRATE", \
+				 "DEBOUNCE", "SAMPLE_HOLD", "CONSTANT","COUNTER", \
 				 "SKINDIALOG", "FILEWRITE", "DEVIATION", "MEDIAPLAYER", "KEYSTRIKE", \
-				 "PEAKDETECT", "SPELLER", "MARTINI", "FILEREAD", "PORT_IO", \
-				 "ARRAY-3600", "COMREADER", "NEUROBIT", "MIN", "MAX", "ROUND", \
-				 "DIFFERENTIATE", "DELAY", "LIMITER", "EMOTIV", "FLOAT_VECTOR", \
+				 "PEAKDETECT", "MARTINI", "FILEREAD", \
+				 "ARRAY-3600", "COMREADER", "MIN", "MAX", "ROUND", \
+				 "DIFFERENTIATE", "DELAY", "LIMITER", "FLOAT_VECTOR", \
 				 "VECTOR_FLOAT", "DISPLAY_VECTOR", "VECTORBUFFER", "GANGLION", \
 				 "SESSIONTIME", "SESSIONMANAGER", "KEYCAPTURE", "BUTTON", "EVALUATOR EXPR-TK", \
-				 "SHADOW", "VOLUME", "OSC-SENDER", "BIOSEMI", "BRAINFLOW", "LSL"
+				 "SHADOW", "VOLUME", "OSC-SENDER", "LSL"
 //
 // use the main menu handler in brainbay.cpp 
 // to call the 'create_object'-function (located in in gloabals.cpp)
@@ -366,11 +354,7 @@ typedef struct GLOBALStruct
 	int use_cv_capture;
 	int os_version;
 
-	int neurobit_available;
-	int emotiv_available;
-	int biosemi_available;
 	int ganglion_available;
-	int brainflow_available;
 
 	int ganglion_bledongle;
 
@@ -386,11 +370,9 @@ typedef struct GLOBALStruct
 	char nextconfigname[256];
 	char resourcepath[256];
 	char configfile[256];
-	char emotivpath[256];
 	char startdesignpath[256];
 	char ganglionhubpath[256];
 	char gangliondevicename[100];
-	char neurobit_device[100];
 
 	long session_length;
 	long session_start;
@@ -796,7 +778,6 @@ LRESULT CALLBACK CounterWndHandler(HWND hWnd, UINT , WPARAM , LPARAM );
 LRESULT CALLBACK ShadowWndHandler(HWND hWnd, UINT , WPARAM , LPARAM );
 LRESULT CALLBACK BallgameWndHandler(HWND hWnd, UINT , WPARAM , LPARAM );
 LRESULT CALLBACK MartiniWndHandler(HWND hWnd, UINT , WPARAM , LPARAM );
-LRESULT CALLBACK SpellerWndHandler(HWND hWnd, UINT , WPARAM , LPARAM );
 LRESULT CALLBACK DesignWndHandler(HWND hWnd, UINT , WPARAM , LPARAM );
 LRESULT CALLBACK StatusDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam );
 LRESULT CALLBACK SETTINGSDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam );

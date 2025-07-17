@@ -6,7 +6,6 @@
   
   Co-Authors:
 		 Jeremy Wilkerson (Modules: AND, OR, NOT, WAV, CORRELATION, EVALUATOR)
-		 Lester John (Module MATLAB-transfer)
 		 Stephan Gerhard (QDS parser)
 
   Credits: Jim Peters (digital filter works), Jeff Molofee (OpenGL-tutorial), John Roark (SkinDialog)
@@ -16,8 +15,6 @@
 
   Multimedia and OpenGL: winmm.lib opengl32.lib glu32.lib vfw32.lib glaux.lib
   SDL (Simple Direct Media Layer): SDL.lib SDL_net.lib SDL_sound.lib modplug.lib 
-  OpenCV - Intels's Computer Vision Library: cv.lib cvcam.lib cxcore.lib highgui.lib
-  Matlab Engine (only in special Matlab Release): libeng.lib libmx.lib 
   Jim Peters's Filter Library: fidlib.lib (http://uazu.net)
   Skinned Dialog by John Roark: skinstyle.lib (http://www.codeproject.com/dialog/skinstyle.asp)
   GNU LibMatheval by Aleksandar B. Samardz: matheval.lib (http://www.gnu.org/software/libmatheval)

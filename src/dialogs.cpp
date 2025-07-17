@@ -643,7 +643,6 @@ LRESULT CALLBACK SETTINGSDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPA
 				  if (MIDIPORTS[t].midiout) SendDlgItemMessage(hDlg, IDC_MIDIPORTLIST, LB_ADDSTRING, 0, (LPARAM) (LPSTR) MIDIPORTS[t].portname) ;
 				}
 				SetDlgItemText(hDlg, IDC_MIDIPORTCOMBO, MIDIPORTS[port].portname);
-				SetDlgItemText(hDlg, IDC_EMOTIV_PATH, GLOBAL.emotivpath);
 				SetDlgItemText(hDlg, IDC_GANGLION_PATH, GLOBAL.ganglionhubpath);
 				SetDlgItemText(hDlg, IDC_STARTDESIGN_PATH, GLOBAL.startdesignpath);
 
@@ -780,9 +779,6 @@ LRESULT CALLBACK SETTINGSDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPA
 				break;
 			case IDC_DRAWINTERVAL:
 				GLOBAL.draw_interval=GetDlgItemInt(hDlg,IDC_DRAWINTERVAL, NULL, 0);
-				break;
-			case IDC_EMOTIV_PATH:
-				GetDlgItemText(hDlg,IDC_EMOTIV_PATH, GLOBAL.emotivpath, 255);
 				break;
 			case IDC_GANGLION_PATH:
 				GetDlgItemText(hDlg,IDC_GANGLION_PATH, GLOBAL.ganglionhubpath, 255);

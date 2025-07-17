@@ -16,7 +16,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// GERMAN(GERMANY) resources
+// µ¬”Ô(µ¬π˙) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
@@ -62,9 +62,6 @@ BEGIN
                 MENUITEM "generic (1 Channel raw data 8 bit)", IDM_INSERT_EEG_GENERIC8
                 MENUITEM "generic (1 Channel raw data 16 Bit)", IDM_INSERT_EEG_GENERIC16
                 MENUITEM SEPARATOR
-                MENUITEM "BioSemi Active Two",          IDM_INSERT_EEG_BIOSEMI
-                MENUITEM "BrainFlow-Compatible (OpenBCI, Brainbit, Unicorn, Muse, Ant, Enophone etc.)", IDM_INSERT_BRAINFLOW
-                MENUITEM "Emotiv Epoc (14 Channels, raw EEG data)", IDM_INSERTEMOTIV
                 MENUITEM "IBVA (2 Channel EEG)",        IDM_INSERT_EEG_IBVA
                 MENUITEM "MonolithEEG (P21 Packetformat)", IDM_INSERT_EEG_P21
                 MENUITEM "Neurobit Biosignal Amplifier (Lite, Optima and Optima+)", IDM_INSERTOPTIMA
@@ -158,7 +155,6 @@ BEGIN
             MENUITEM "Martini-Game",                IDM_INSERTMARTINI
             MENUITEM "Sessiontime",                 IDM_INSERTSESSIONTIME
             MENUITEM "SessionManager",              IDM_INSERTSESSIONMANAGER
-            MENUITEM "Speller",                     IDM_INSERTSPELLER
         END
     END
     POPUP "Session"
@@ -1929,12 +1925,12 @@ BEGIN
     IDS_STRING1             "rc.bottom-rc.top"
 END
 
-#endif    // ÎèÖÏùºÏñ¥(ÎèÖÏùº) resources
+#endif    // µ¬”Ô(µ¬π˙) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// ÏòÅÏñ¥(ÎØ∏Íµ≠) resources
+// ”¢”Ô(√¿π˙) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -2025,12 +2021,12 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // ÏòÅÏñ¥(ÎØ∏Íµ≠) resources
+#endif    // ”¢”Ô(√¿π˙) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// ÏòÅÏñ¥(ÏòÅÍµ≠) resources
+// ”¢”Ô(”¢π˙) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
@@ -2124,12 +2120,12 @@ BEGIN
     0
 END
 
-#endif    // ÏòÅÏñ¥(ÏòÅÍµ≠) resources
+#endif    // ”¢”Ô(”¢π˙) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// ÎèÖÏùºÏñ¥(Ïò§Ïä§Ìä∏Î¶¨ÏïÑ) resources
+// µ¬”Ô(∞¬µÿ¿˚) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEA)
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN_AUSTRIAN
@@ -3109,7 +3105,7 @@ IDC_CURSOR5             CURSOR                  "CURSORS\\dwell_arrow4.cur"
 
 IDC_CURSOR6             CURSOR                  "CURSORS\\dwell_arrow5.cur"
 
-#endif    // ÎèÖÏùºÏñ¥(Ïò§Ïä§Ìä∏Î¶¨ÏïÑ) resources
+#endif    // µ¬”Ô(∞¬µÿ¿˚) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
