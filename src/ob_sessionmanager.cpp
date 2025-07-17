@@ -1,4 +1,4 @@
-/* -----------------------------------------------------------------------------
+ï»¿/* -----------------------------------------------------------------------------
 
     BrainBay  -  OpenSource Biofeedback Software, contact: chris@shifz.org
   
@@ -642,7 +642,7 @@ void SESSIONMANAGEROBJ::load(HANDLE hFile)
 	load_property("logopath",P_STRING,logopath);
 	load_property("sessionlist",P_STRING,sessionlist);
 	char * tmp=sessionlist;
-	while (*tmp) { if (*tmp=='§') *tmp='\n'; if (*tmp=='~') *tmp='\r'; tmp++; } 
+	while (*tmp) { if (*tmp=='ï¿½') *tmp='\n'; if (*tmp=='~') *tmp='\r'; tmp++; } 
 	load_property("displaynavigation",P_INT,&displaynavigation);
 	load_property("bitmapsize",P_INT,&bitmapsize);
 	load_property("menu_x",P_INT,&menu_x);
@@ -691,10 +691,10 @@ void SESSIONMANAGEROBJ::save(HANDLE hFile)
 	save_property(hFile,"logopath",P_STRING,logopath);
 
 	char * tmp=sessionlist;
-	while (*tmp) { if (*tmp=='\n') *tmp='§'; if (*tmp=='\r') *tmp='~'; tmp++; } 
+	while (*tmp) { if (*tmp=='\n') *tmp='ï¿½'; if (*tmp=='\r') *tmp='~'; tmp++; } 
 	save_property(hFile,"sessionlist",P_STRING,sessionlist);
 	tmp=sessionlist;
-	while (*tmp) { if (*tmp=='§') *tmp='\n'; if (*tmp=='~') *tmp='\r'; tmp++; } 
+	while (*tmp) { if (*tmp=='ï¿½') *tmp='\n'; if (*tmp=='~') *tmp='\r'; tmp++; } 
 
 	save_property(hFile,"displaynavigation",P_INT,&displaynavigation);
 	save_property(hFile,"bitmapsize",P_INT,&bitmapsize);

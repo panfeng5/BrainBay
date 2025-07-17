@@ -1,4 +1,4 @@
-/* -----------------------------------------------------------------------------
+ï»¿/* -----------------------------------------------------------------------------
 
     BrainBay  -  OpenSource Biofeedback Software, contact: chris@shifz.org
   
@@ -45,14 +45,14 @@ void init_dict( SPELLEROBJ * st )
 {
 	st->entries=0;
 
-	add_dict(st,2,"Wörter ->","\3");
+	add_dict(st,2,"Wï¿½rter ->","\3");
 	add_dict(st,1,"<_G.,!?","< \2.,!?");
 	add_dict(st,1,"enis","enis");
 	add_dict(st,1,"ratd","ratd");
 	add_dict(st,1,"hulc","hulc");
 	add_dict(st,1,"gmobp","gmobp");
 	add_dict(st,1,"vwfkz","vwfkz");
-	add_dict(st,1,"jyxqäöü","jyxqäöü");
+	add_dict(st,1,"jyxqï¿½ï¿½ï¿½","jyxqï¿½ï¿½ï¿½");
 	add_dict(st,1,"012345678","0123456789");
 	//add_dict(st,2,"Text senden","\1");
 	add_dict(st,1,"F12345678","F12345678");
@@ -65,7 +65,7 @@ void init_dict( SPELLEROBJ * st )
 	st->dict[(st->entries)-1].data[7]=16;
 	st->dict[(st->entries)-1].data[8]=17;
 
-	add_dict(st,2,"Wörterbücher","\4");
+	add_dict(st,2,"Wï¿½rterbï¿½cher","\4");
 	
 
 
@@ -126,14 +126,14 @@ int import_words(SPELLEROBJ * st, LPCTSTR szFileName)
 		 c=buffer[0];
 		 if (!wordflag)
 		 {  
-			 if (((c>='a')&&(c<='z'))||((c>='A')&&(c<='Z'))||(c=='ä')||(c=='ä')||(c=='ö')||(c=='ü')||(c=='Ä')||(c=='Ö')||(c=='Ü')||(c=='ß'))
+			 if (((c>='a')&&(c<='z'))||((c>='A')&&(c<='Z'))||(c=='ï¿½')||(c=='ï¿½')||(c=='ï¿½')||(c=='ï¿½')||(c=='ï¿½')||(c=='ï¿½')||(c=='ï¿½')||(c=='ï¿½'))
 			 wordflag=1;
 			 actpos=0;
 		 }
 		 
 		 if (wordflag)
 		 {
-			 if (((c<'a')||(c>'z'))&&((c<'A')||(c>'Z'))&&(c!='ä')&&(c!='ä')&&(c!='ö')&&(c!='ü')&&(c!='Ä')&&(c!='Ö')&&(c!='Ü')&&(c!='ß'))
+			 if (((c<'a')||(c>'z'))&&((c<'A')||(c>'Z'))&&(c!='ï¿½')&&(c!='ï¿½')&&(c!='ï¿½')&&(c!='ï¿½')&&(c!='ï¿½')&&(c!='ï¿½')&&(c!='ï¿½')&&(c!='ï¿½'))
 			 {
 				 actword[actpos]=0;
 
@@ -163,9 +163,9 @@ int import_words(SPELLEROBJ * st, LPCTSTR szFileName)
 char upstr(char c)
 {
 	if ((c>='a')&&(c<='z')) return (c-'a'+'A');
-	if (c=='ä') return( 'Ä');
-	if (c=='ö') return( 'Ö');
-	if (c=='ü') return( 'Ü');
+	if (c=='ï¿½') return( 'ï¿½');
+	if (c=='ï¿½') return( 'ï¿½');
+	if (c=='ï¿½') return( 'ï¿½');
 	return(c);
 }
 
@@ -239,7 +239,7 @@ void draw_speller(SPELLEROBJ * st)
 		SetTextColor(hdc,RGB(255,255,255));
 		SetBkColor(hdc,RGB(0,0,50));
 		reduce_filepath(fn,st->dictfile);
-		sprintf(szdata,"Wörterbuch: %s, %d words.",fn, st->wordcount);
+		sprintf(szdata,"Wï¿½rterbuch: %s, %d words.",fn, st->wordcount);
 		ExtTextOut( hdc, 360, 70, 0, &rect,szdata, strlen(szdata), NULL );
 
 		//ExtTextOut( hdc, 360, 80, 0, &rect,st->fn, strlen(st->fn), NULL );
@@ -645,7 +645,7 @@ SPELLEROBJ::SPELLEROBJ(int num) : BASE_CL()
 		  for (x=0;x<=(int)strlen(word);x++)
 		  { 
 			if ( ((word[x]>='a') && (word[x]<='z')) || ((word[x]>='A') && (word[x]<='Z'))
-				|| (word[x]=='ä') || (word[x]=='ö') || (word[x]=='ü') || (word[x]=='Ä') || (word[x]=='Ö') || (word[x]=='Ü'))
+				|| (word[x]=='ï¿½') || (word[x]=='ï¿½') || (word[x]=='ï¿½') || (word[x]=='ï¿½') || (word[x]=='ï¿½') || (word[x]=='ï¿½'))
 			{
 				actword[a++]=word[x];
 				actword[a]=0;
