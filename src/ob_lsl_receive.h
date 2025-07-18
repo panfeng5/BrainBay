@@ -21,7 +21,7 @@
 -----------------------------------------------------------------------------*/
 
 #include "brainBay.h"
-#include "lsl_cpp.h"
+#include "lsl/lsl_cpp.h"
 
 class LSL_RECEIVEOBJ : public BASE_CL
 {

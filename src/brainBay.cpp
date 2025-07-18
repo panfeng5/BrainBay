@@ -11,7 +11,7 @@
 		 Raymond Nguyen (Vector ports)
  		 Franz Stobl ( NIA support )
 
-  Credits: Jim Peters (digital filter works), Jeff Molofee (OpenGL-tutorial), John Roark (SkinDialog)
+  Credits: Jim Peters (digital filter works), Jeff Molofee (OpenGL-tutorial)
   		   AllenD (COM-Port control), Aleksandar B. Samardz (Expression Evaluator Library)
 		   Craig Peacock (PortTalk IO driver)
 
@@ -20,7 +20,6 @@
   Multimedia and OpenGL: winmm.lib opengl32.lib glu32.lib vfw32.lib glaux.lib
   SDL (Simple Direct Media Layer): SDL.lib SDL_net.lib SDL_sound.lib modplug.lib 
   Jim Peters's Filter Library: fidlib.lib (http://uazu.net)
-  Skinned Dialog by John Roark: skinstyle.lib (http://www.codeproject.com/dialog/skinstyle.asp)
   GNU LibMatheval by Aleksandar B. Samardz: matheval.lib (http://www.gnu.org/software/libmatheval)
   Video Input Camera Capture Library: http://muonics.net/school/spring05/videoInput/
 
@@ -47,7 +46,6 @@
 #include "ob_osci.h"
 #include "ob_sessionmanager.h"
 #include "ob_threshold.h"
-#include "ob_skindialog.h"
 
 LRESULT CALLBACK AboutDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam );
 LRESULT CALLBACK SCALEDlgHandler( HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam );
@@ -459,9 +457,6 @@ LRESULT CALLBACK MainWndHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 				case IDM_INSERTCONSTANT:create_object(OB_CONSTANT);
 					break;
 				case IDM_INSERTCOUNTER:create_object(OB_COUNTER);
-					break;
-				case IDM_INSERTSKINDIALOG:
-					if (!count_objects(OB_SKINDIALOG)) create_object(OB_SKINDIALOG);
 					break;
 				case IDM_INSERTFILE_WRITER:create_object(OB_FILE_WRITER);
 					break;

@@ -21,7 +21,7 @@
 
 
 #include "brainBay.h"
-#include "SDL_sound.h"
+#include "SDL/SDL_sound.h"
 
 #define DEF_BUFSIZE 2048
 

@@ -19,7 +19,7 @@
 
 #include "brainBay.h"
 #include <iostream>
-#include "SDL_net.h"
+#include "SDL/SDL_net.h"
 
 #define TCP_OK 200
 #define TCP_BAD_REQUEST 400

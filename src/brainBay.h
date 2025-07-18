@@ -10,7 +10,7 @@
 		 Stephan Gerhard (QDS parser)
 		 Franz Stobl ( NIA support )
 
-  Credits: Jim Peters (digital filter works), Jeff Molofee (OpenGL-tutorial), John Roark (SkinDialog)
+  Credits: Jim Peters (digital filter works), Jeff Molofee (OpenGL-tutorial)
   		   AllenD (COM-Port control), Aleksandar B. Samardz (Expression Evaluator Library)
 
   the used non-standard Libraries are:
@@ -18,7 +18,6 @@
   Multimedia and OpenGL: winmm.lib opengl32.lib glu32.lib vfw32.lib glaux.lib
   SDL (Simple Direct Media Layer): SDL.lib SDL_net.lib SDL_sound.lib modplug.lib 
   Jim Peters's Filter Library: fidlib.lib (http://uazu.net)
-  Skinned Dialog by John Roark: skinstyle.lib (http://www.codeproject.com/dialog/skinstyle.asp)
   GNU LibMatheval by Aleksandar B. Samardz: matheval.lib (http://www.gnu.org/software/libmatheval)
   
 
@@ -52,7 +51,7 @@
 #include <GL/glu.h>					// GLu32 Library
 #include <SDL/SDL.h>				// SDL Library
 extern "C" { 
-#include "fidlib.h"				    // Filter Library, uses .c-conventions
+#include "fidlib/fidlib.h"				    // Filter Library, uses .c-conventions
 } 
 
 
@@ -103,7 +102,6 @@ extern "C" {
 #define OB_SAMPLE_HOLD  32
 #define OB_CONSTANT     33
 #define OB_COUNTER      35
-#define OB_SKINDIALOG   36
 #define OB_FILE_WRITER  37
 #define OB_DEVIATION    38
 #define OB_MCIPLAYER    39
@@ -145,7 +143,7 @@ extern "C" {
 				 "EDF-READER","EDF-WRITER","TCP-SENDER","COMPARE","BALLGAME",  \
 				 "MIXER", "MOUSE", "ERP-DETECT", "COM-WRITER", "INTEGRATE", \
 				 "DEBOUNCE", "SAMPLE_HOLD", "CONSTANT","COUNTER", \
-				 "SKINDIALOG", "FILEWRITE", "DEVIATION", "MEDIAPLAYER", "KEYSTRIKE", \
+				 "FILEWRITE", "DEVIATION", "MEDIAPLAYER", "KEYSTRIKE", \
 				 "PEAKDETECT", "MARTINI", "FILEREAD", \
 				 "ARRAY-3600", "COMREADER", "MIN", "MAX", "ROUND", \
 				 "DIFFERENTIATE", "DELAY", "LIMITER", "FLOAT_VECTOR", \

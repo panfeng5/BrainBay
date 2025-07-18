@@ -172,9 +172,6 @@
     <ClCompile Include="ob_signal.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="ob_skindialog.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="ob_tcp_receive.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -217,8 +214,8 @@
     <ClCompile Include="tty.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\fidlib-0.9.10\fidlib.c">
-      <Filter>Source</Filter>
+    <ClCompile Include="..\lib\fidlib\fidlib.c">
+      <Filter>fidlib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -390,9 +387,6 @@
     <ClInclude Include="ob_signal.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="ob_skindialog.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="ob_tcp_receive.h">
       <Filter>Header</Filter>
     </ClInclude>
@@ -423,11 +417,20 @@
     <ClInclude Include="..\lib\matheval.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="..\lib\SDL_net.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="..\lib\fidlib\fidlib.h">
+      <Filter>fidlib</Filter>
     </ClInclude>
-    <ClInclude Include="..\lib\fidlib-0.9.10\fidlib.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="..\lib\fidlib\fidmkf.h">
+      <Filter>fidlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\fidlib\fidrf_cmdlist.h">
+      <Filter>fidlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\fidlib\fidrf_combined.h">
+      <Filter>fidlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\fidlib\fidrf_jit.h">
+      <Filter>fidlib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -465,6 +468,9 @@
     </Filter>
     <Filter Include="RC">
       <UniqueIdentifier>{a1a38a8a-5274-4804-b97e-34106e6ddcfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fidlib">
+      <UniqueIdentifier>{297fd506-f12c-4450-8fce-0392b9350abe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

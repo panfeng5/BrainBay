@@ -57,9 +57,6 @@
 #include "ob_sample_hold.h"
 #include "ob_constant.h"
 #include "ob_counter.h"
-#ifndef MINGW
-#include "ob_skindialog.h"
-#endif
 #include "ob_file_writer.h"
 #include "ob_deviation.h"
 #include "ob_mci.h"
@@ -124,7 +121,7 @@ char objnames[OBJECT_COUNT][20]      = { OBJNAMES };
 char dimensions[10][10]      = {"uV","mV","V","Hz","%","DegC","DegF","uS","kOhm","BPM" };
 int  fft_bin_values[10]    = { 32,64,128,256,512,1024,2048,4096,0 };
 
-int singletonObjects [] = {OB_EEG,OB_WAV,OB_SKINDIALOG,OB_GANGLION,OB_SESSIONMANAGER,-1};
+int singletonObjects [] = {OB_EEG,OB_WAV,OB_GANGLION,OB_SESSIONMANAGER,-1};
 	
 
 //
@@ -220,10 +217,6 @@ void create_object(int type)
 							 actobject->object_size=sizeof(CONSTANTOBJ);break;
         case OB_COUNTER: 	 actobject=new COUNTEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(COUNTEROBJ);break;
-#ifndef MINGW
-        case OB_SKINDIALOG:  actobject=new SKINDIALOGOBJ(GLOBAL.objects); 
-							 actobject->object_size=sizeof(SKINDIALOGOBJ);break;
-#endif
         case OB_FILE_WRITER: actobject=new FILE_WRITEROBJ(GLOBAL.objects); 
 							 actobject->object_size=sizeof(FILE_WRITEROBJ);break;
         case OB_DEVIATION:   actobject=new DEVIATIONOBJ(GLOBAL.objects); 

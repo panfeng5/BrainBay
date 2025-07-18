@@ -19,7 +19,7 @@
 
 #include "brainBay.h"
 #include <iostream>
-#include "SDL_net.h"
+#include "SDL/SDL_net.h"
 #include <stdint.h>
 #include <cstring>
 #include <iostream>
